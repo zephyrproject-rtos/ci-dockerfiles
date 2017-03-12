@@ -71,7 +71,8 @@ RUN dpkg --add-architecture i386 \
 
 RUN useradd -m -G plugdev buildslave \
  && echo 'buildslave ALL = NOPASSWD: ALL' > /etc/sudoers.d/jenkins \
- && chmod 0440 /etc/sudoers.d/jenkins
+ && chmod 0440 /etc/sudoers.d/jenkins \
+ && mkdir -p /var/run/sshd
 
 EXPOSE 22
 ENTRYPOINT ["/usr/sbin/setup-sshd"]
