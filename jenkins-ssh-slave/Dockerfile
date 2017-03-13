@@ -49,6 +49,7 @@ RUN dpkg --add-architecture i386 \
  python-mako \
  python-networkx \
  python-requests \
+ python-yaml \
  python3-ply \
  python3-yaml \
  qemu-user-static \
