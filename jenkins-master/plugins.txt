@@ -51,4 +51,4 @@ warnings:4.60
 windows-slaves:1.3.1
 workflow-aggregator:2.5
 ws-cleanup:0.32
-yet-another-docker-plugin:0.1.0-rc33
+yet-another-docker-plugin:0.1.0-rc31
