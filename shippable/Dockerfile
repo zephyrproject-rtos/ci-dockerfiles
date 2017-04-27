@@ -1,8 +1,11 @@
 FROM drydock/u16cppall:v5.5.1
 
-ADD . /zephyr-docker
+ADD . /shippable
 
-RUN /zephyr-docker/install.sh
+RUN /shippable/install.sh
+RUN /shippable/install_clang.sh
+RUN /shippable/install_sdk.sh
+RUN /shippable/install_deps.sh
 
 RUN useradd -m -G plugdev buildslave \
  && echo 'buildslave ALL = NOPASSWD: ALL' > /etc/sudoers.d/buildslave \
