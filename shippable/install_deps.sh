@@ -1,6 +1,6 @@
 #!/bin/sh -e
 echo "==================== Installing zephyr dependencies ==================="
-apt-get install git make gcc g++ python3-ply python3-yaml python-yaml doxygen
+apt-get install git make gcc g++ python3-ply python3-yaml python-yaml doxygen device-tree-compiler
 pip install awscli sphinx breathe sphinx_rtd_theme
 
 
