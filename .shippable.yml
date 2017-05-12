@@ -12,5 +12,5 @@ build:
 
 integrations:
   hub:
-    - integrationName: DH-Integration
+    - integrationName: project_docker_repo
       type: docker
