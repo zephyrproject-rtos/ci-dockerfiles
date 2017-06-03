@@ -9,7 +9,7 @@ mv gcc-arm-none-eabi-6-2017-q1-update /opt/toolchain/arm-none-eabi
 wget http://registrationcenter-download.intel.com/akdlm/irc_nas/9572/issm-toolchain-linux-2017-02-07.tar.gz
 tar xvf issm-toolchain-linux-2017-02-07.tar.gz
 rm issm-toolchain-linux-2017-02-07.tar.gz
-mv issm-toolchain-linux-2017-02-07/tools/compiler/gcc-ia/5.2.1 /opt/toolchain/i586-intel-elfiamcu
+mv issm-toolchain-linux-2017-02-07 /opt/issm
 
 wget https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2016.09-release/arc_gnu_2016.09_prebuilt_elf32_le_linux_install.tar.gz
 tar xvf arc_gnu_2016.09_prebuilt_elf32_le_linux_install.tar.gz
