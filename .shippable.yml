@@ -8,7 +8,10 @@ build:
       - cd shippable
       - docker build -t zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER .
     post_ci:
-      - docker push zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER
+      - >
+        if [ "$IS_PULL_REQUEST" = "false" ]; then
+          docker push zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER;
+        fi
 
 integrations:
   hub:
