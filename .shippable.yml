@@ -9,7 +9,7 @@ build:
       - docker build -t zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER .
     post_ci:
       - >
-        if [ "$IS_PULL_REQUEST" = "false" ]; then
+        if [ "IS_GIT_TAG" = "true" ]; then
           docker push zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER;
         fi
 
