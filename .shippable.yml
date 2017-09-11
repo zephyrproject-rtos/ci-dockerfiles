@@ -4,7 +4,8 @@ build:
     ci:
       - cd shippable
       - >
-        if [ "IS_GIT_TAG" = "true" ]; then
+        env;
+        if [ "${IS_GIT_TAG}" = "true" ]; then
           docker build -t zephyrprojectrtos/ci:${GIT_TAG_NAME} .;
         else
           docker build -t  zephyrprojectrtos/ci:$BRANCH.$BUILD_NUMBER .;
@@ -12,7 +13,7 @@ build:
 
     post_ci:
       - >
-        if [ "IS_GIT_TAG" = "true" ]; then
+        if [ "${IS_GIT_TAG}" = "true" ]; then
           docker push zephyrprojectrtos/ci:${GIT_TAG_NAME};
         fi
 
