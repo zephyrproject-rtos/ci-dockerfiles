@@ -4,7 +4,6 @@ build:
     ci:
       - cd shippable
       - >
-        env;
         if [ "${IS_GIT_TAG}" = "true" ]; then
           docker build -t zephyrprojectrtos/ci:${GIT_TAG_NAME} .;
         else

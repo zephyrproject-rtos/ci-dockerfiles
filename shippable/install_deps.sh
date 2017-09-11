@@ -16,7 +16,7 @@ rm ccache_3.3.3-1_amd64.deb
 
 
 wget -q https://cmake.org/files/v3.9/cmake-3.9.1-Linux-x86_64.tar.gz
-tar xvf cmake-3.9.1-Linux-x86_64.tar.gz
+tar xf cmake-3.9.1-Linux-x86_64.tar.gz
 cp -a cmake-3.9.1-Linux-x86_64/bin/* /usr/local/bin/
 cp -a cmake-3.9.1-Linux-x86_64/share/* /usr/local/share/
 rm -rf cmake-3.9.1-Linux-x86_64
