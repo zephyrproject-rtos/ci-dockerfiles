@@ -8,7 +8,7 @@ apt-get install gcc-6-multilib gcovr valgrind ninja-build lcov
 # for net-tools
 apt-get install libglib2.0-dev libpcap-dev
 pip3 install awscli breathe==4.7.3 sphinx==1.6.5 docutils==0.14 sphinx_rtd_theme junit2html
-pip3 install pyelftools==0.24 pykwalify sh gitlint==0.9.0
+pip3 install pyelftools==0.24 pykwalify sh gitlint==0.9.0 pyserial
 
 
 wget -q https://launchpad.net/ubuntu/+archive/primary/+files/ccache_3.3.3-1_amd64.deb
