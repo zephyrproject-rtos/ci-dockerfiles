@@ -10,17 +10,24 @@ apt-get install libglib2.0-dev libpcap-dev
 pip3 install awscli breathe==4.7.3 sphinx==1.6.5 docutils==0.14 sphinx_rtd_theme junit2html
 pip3 install pyelftools==0.24 pykwalify sh gitlint==0.9.0 pyserial
 
+CCACHE_VERSION="3.4.2"
+wget https://www.samba.org/ftp/ccache/ccache-${CCACHE_VERSION}.tar.bz2
+tar xvf ccache-${CCACHE_VERSION}.tar.bz2
+cd ccache-${CCACHE_VERSION}
+./configure
+make
+make install
+ccache -V
+cd ..
+rm -rf ccache-${CCACHE_VERSION} ccache-${CCACHE_VERSION}.tar.bz2
 
-wget -q https://launchpad.net/ubuntu/+archive/primary/+files/ccache_3.3.3-1_amd64.deb
-dpkg -i ccache_3.3.3-1_amd64.deb
-rm ccache_3.3.3-1_amd64.deb
 
-
-wget -q https://cmake.org/files/v3.9/cmake-3.9.1-Linux-x86_64.tar.gz
-tar xf cmake-3.9.1-Linux-x86_64.tar.gz
-cp -a cmake-3.9.1-Linux-x86_64/bin/* /usr/local/bin/
-cp -a cmake-3.9.1-Linux-x86_64/share/* /usr/local/share/
-rm -rf cmake-3.9.1-Linux-x86_64
+CMAKE_VERSION=3.9.1
+wget -q https://cmake.org/files/v3.9/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
+tar xf cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
+cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/bin/* /usr/local/bin/
+cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/share/* /usr/local/share/
+rm -rf cmake-${CMAKE_VERSION}-Linux-x86_64
 cmake -version
 
 echo "=============== Successfully Installed zephyr deps ============"
