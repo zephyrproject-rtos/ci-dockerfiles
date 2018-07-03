@@ -1,10 +1,10 @@
 
 
-wget -q https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/6_1-2017q1/gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2
-tar xf gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2
-rm -f gcc-arm-none-eabi-6-2017-q1-update-linux.tar.bz2
+wget -q https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/7-2018q2/gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
+tar xf gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
+rm -f gcc-arm-none-eabi-7-2018-q2-update-linux.tar.bz2
 mkdir /opt/toolchain
-mv gcc-arm-none-eabi-6-2017-q1-update /opt/toolchain/arm-none-eabi
+mv gcc-arm-none-eabi-7-2018-q2-update /opt/toolchain/arm-none-eabi
 
 wget -q http://registrationcenter-download.intel.com/akdlm/irc_nas/9572/issm-toolchain-linux-2017-02-07.tar.gz
 tar xf issm-toolchain-linux-2017-02-07.tar.gz
