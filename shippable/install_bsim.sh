@@ -8,4 +8,7 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo  && chmod a
 ./repo sync
 make everything -j 8
 echo $BSIM_VERSION > ./version
+ls -al bin/
+ls -al lib/
+ls -al ./
 echo "=============== Successfully Installed BabbleSim ============"
