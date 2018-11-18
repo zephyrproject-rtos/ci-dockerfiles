@@ -7,8 +7,9 @@ apt-get install gcc-6-multilib gcovr valgrind ninja-build lcov
 
 # for net-tools
 apt-get install libglib2.0-dev libpcap-dev
-pip3 install awscli breathe==4.9.1 sphinx==1.7.5 docutils==0.14 sphinx_rtd_theme junit2html
-pip3 install pyelftools==0.24 pykwalify sh gitlint==0.9.0 pyserial
+wget -q https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
+pip3 install -r requirements.txt
+pip3 install awscli west PyGithub junitparser
 
 CCACHE_VERSION="3.4.2"
 wget https://www.samba.org/ftp/ccache/ccache-${CCACHE_VERSION}.tar.bz2
@@ -22,8 +23,8 @@ cd ..
 rm -rf ccache-${CCACHE_VERSION} ccache-${CCACHE_VERSION}.tar.bz2
 
 
-CMAKE_VERSION=3.9.1
-wget -q https://cmake.org/files/v3.9/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
+CMAKE_VERSION=3.8.2
+wget -q https://cmake.org/files/v3.8/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
 tar xf cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
 cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/bin/* /usr/local/bin/
 cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/share/* /usr/local/share/
