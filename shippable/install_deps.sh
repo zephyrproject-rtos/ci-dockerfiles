@@ -31,4 +31,10 @@ cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/share/* /usr/local/share/
 rm -rf cmake-${CMAKE_VERSION}-Linux-x86_64
 cmake -version
 
+
+cd /opt
+git clone https://github.com/nexB/scancode-toolkit.git
+cd scancode-toolkit
+./configure
+
 echo "=============== Successfully Installed zephyr deps ============"
