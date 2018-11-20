@@ -37,5 +37,9 @@ cd /opt
 git clone https://github.com/nexB/scancode-toolkit.git
 cd scancode-toolkit
 ./configure
+chmod a+w /opt/scancode-toolkit/
+chmod a+r /opt/scancode-toolkit/bin/scancode
+
+./scancode --copyright --license --license-diag --info --classify --summary --json scancode.js README.rst
 
 echo "=============== Successfully Installed zephyr deps ============"
