@@ -8,6 +8,7 @@ RUN /shippable/install_deps.sh
 RUN /shippable/install_vendor_toolchains.sh
 RUN /shippable/install_esp32.sh
 RUN /shippable/install_bsim.sh
+RUN /shippable/install_source.sh
 
 RUN useradd -m -G plugdev buildslave \
  && echo 'buildslave ALL = NOPASSWD: ALL' > /etc/sudoers.d/buildslave \
