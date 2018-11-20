@@ -30,7 +30,8 @@ cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/bin/* /usr/local/bin/
 cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/share/* /usr/local/share/
 rm -rf cmake-${CMAKE_VERSION}-Linux-x86_64
 cmake -version
-
+rm -f cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
+rm -f clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
 
 cd /opt
 git clone https://github.com/nexB/scancode-toolkit.git
