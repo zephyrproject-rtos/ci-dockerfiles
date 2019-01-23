@@ -1,10 +1,9 @@
 #!/bin/sh -e
 
-VERSION=v0.1-beta2
+VERSION=0.10.0-beta5
 
-wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/${VERSION}/zephyr-sdk-ng-${VERSION}.tar.bz2
-tar xf zephyr-sdk-ng-${VERSION}.tar.bz2
-rm -f zephyr-sdk-ng-${VERSION}.tar.bz2
-mkdir -p /opt
-mv zephyr-sdk-ng-v0.1-beta2 /opt
+wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${VERSION}/zephyr-sdk-${VERSION}-setup.run
+chmod +x zephyr-sdk-${VERSION}-setup.run
 
+./zephyr-sdk-${VERSION}-setup.run --quiet -- -d /opt/sdk/zephyr-sdk-${VERSION}
+rm zephyr-sdk-${VERSION}-setup.run
