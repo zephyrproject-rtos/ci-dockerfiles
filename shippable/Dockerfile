@@ -9,6 +9,7 @@ RUN /shippable/install_sdk_ng.sh
 RUN /shippable/install_vendor_toolchains.sh
 RUN /shippable/install_esp32.sh
 RUN /shippable/install_bsim.sh
+RUN /shippable/install_renode.sh
 RUN /shippable/install_source.sh
 
 RUN useradd -m -G plugdev buildslave \
