@@ -3,9 +3,9 @@ FROM drydock/u16cppall:v5.5.1
 ADD . /shippable
 
 RUN /shippable/install.sh
+RUN /shippable/install_deps.sh
 RUN /shippable/install_sdk.sh
 RUN /shippable/install_sdk_ng.sh
-RUN /shippable/install_deps.sh
 RUN /shippable/install_vendor_toolchains.sh
 RUN /shippable/install_esp32.sh
 RUN /shippable/install_bsim.sh

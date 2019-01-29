@@ -7,7 +7,7 @@ apt-get install gcc-6-multilib gcovr valgrind ninja-build lcov
 
 # for net-tools
 apt-get install libglib2.0-dev libpcap-dev
-wget -q https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
+curl https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt | grep -v pyocd > requirements.txt
 pip3 install -r requirements.txt
 pip3 install awscli west PyGithub junitparser
 pip3 install Pillow
