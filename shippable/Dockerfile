@@ -11,6 +11,7 @@ RUN /shippable/install_esp32.sh
 RUN /shippable/install_bsim.sh
 RUN /shippable/install_renode.sh
 RUN /shippable/install_source.sh
+RUN /shippable/install_mcuboot.sh
 
 RUN useradd -m -G plugdev buildslave \
  && echo 'buildslave ALL = NOPASSWD: ALL' > /etc/sudoers.d/buildslave \
