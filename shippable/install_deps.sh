@@ -9,7 +9,8 @@ apt-get install gcc-6-multilib gcovr valgrind ninja-build lcov
 apt-get install libglib2.0-dev libpcap-dev
 curl https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt | grep -v pyocd > requirements.txt
 pip3 install -r requirements.txt
-pip3 install awscli west PyGithub junitparser
+pip3 install awscli PyGithub junitparser
+pip3 install west==0.5.5
 pip3 install Pillow
 
 echo "=============== Successfully Installed zephyr deps ============"
