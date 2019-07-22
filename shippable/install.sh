@@ -30,6 +30,7 @@ apt-get install -y \
 	chrpath \
 	socat \
 	libsdl1.2-dev \
+	libsdl2-dev \
 	xterm \
 	libreadline-dev \
 	makeself \
