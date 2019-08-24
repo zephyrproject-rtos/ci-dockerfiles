@@ -7,6 +7,51 @@ mkdir -p /var/lib/apt/lists/partial
 apt-get clean
 apt-get update
 echo "======================== Cleaned apt-get ======================"
+echo "==================== Installing zephyr dependencies ==================="
+apt-get install -y \
+	git\
+	make\
+	gcc\
+	g++\
+	python3-ply \
+	python3-yaml \
+	doxygen \
+	device-tree-compiler \
+	qemu \
+	gawk \
+	wget \
+	git-core \
+	diffstat \
+	unzip \
+	texinfo \
+	gcc-multilib \
+	g++-multilib \
+	build-essential \
+	chrpath \
+	socat \
+	libsdl1.2-dev \
+	xterm \
+	libreadline-dev \
+	makeself \
+	p7zip-full \
+	cpio \
+	gperf \
+	python3-pip \
+	gcc-6-multilib \
+	gcovr \
+	valgrind \
+	ninja-build \
+	lcov \
+	libglib2.0-dev \
+	libpcap-dev
+
+pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
+pip3 install awscli PyGithub junitparser
+
+
+# mcuboot requirements
+
+pip3 install -r https://raw.githubusercontent.com/JuulLabs-OSS/mcuboot/master/scripts/requirements.txt
 
 add-apt-repository ppa:ubuntu-toolchain-r/test
 wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
