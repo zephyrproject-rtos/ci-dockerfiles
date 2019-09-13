@@ -46,7 +46,7 @@ apt-get install -y \
 	libpcap-dev
 
 pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
-pip3 install awscli PyGithub junitparser
+pip3 install awscli PyGithub junitparser pylint
 
 
 # mcuboot requirements
