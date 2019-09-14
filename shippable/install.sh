@@ -44,7 +44,8 @@ apt-get install -y \
 	ninja-build \
 	lcov \
 	libglib2.0-dev \
-	libpcap-dev
+	libpcap-dev \
+	cargo
 
 pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
 pip3 install awscli PyGithub junitparser pylint
@@ -63,4 +64,6 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 50 --slave /usr/bi
 update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-6 50
 gcc --version
 
+# install sccache
+cargo install --root=/usr/local sccache
 
