@@ -65,6 +65,15 @@ update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-6 50
 gcc --version
 echo "================== Successfully Installed gcc 6 ==============="
 
+echo "==================== Installing clang 3.9.0 ==================="
+wget -nv http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
+tar xf clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
+cd clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04
+cp -R * /usr/local/
+cd ../
+clang --version
+echo "=============== Successfully Installed clang 3.9.0 ============"
+
 echo "=================== Install packages for cpp ======================"
 
 apt-get install && apt-get install -y \
