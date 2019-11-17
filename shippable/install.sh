@@ -56,14 +56,23 @@ export AWSEBCLI_VERSION=3.15.2
 echo "================= Adding awsebcli $AWSEBCLI_VERSION =============="
 sudo pip install awsebcli=="$AWSEBCLI_VERSION"
 
-echo "======================= Installing gcc 6 ======================"
+GCC_VERSION=9
+GCC_ALT_PRIO=50
+echo "======================= Installing gcc ${GCC_VERSION} ======================"
 add-apt-repository ppa:ubuntu-toolchain-r/test
 apt-get update
-apt-get install gcc-6 g++-6 gcc-6-multilib g++-6-multilib
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 50 --slave /usr/bin/g++ g++ /usr/bin/g++-6
-update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-6 50
+apt-get install \
+	gcc-${GCC_VERSION} \
+	g++-${GCC_VERSION} \
+	gcc-${GCC_VERSION}-multilib \
+	g++-${GCC_VERSION}-multilib
+update-alternatives \
+	--install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} ${GCC_ALT_PRIO} \
+	--slave /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION}
+update-alternatives \
+	--install /usr/bin/gcov gcov /usr/bin/gcov-${GCC_VERSION} ${GCC_ALT_PRIO}
 gcc --version
-echo "================== Successfully Installed gcc 6 ==============="
+echo "================== Successfully Installed gcc ${GCC_VERSION} ==============="
 
 echo "==================== Installing clang 3.9.0 ==================="
 wget -nv http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
