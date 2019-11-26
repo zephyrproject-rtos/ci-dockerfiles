@@ -1,6 +1,6 @@
 #!/bin/sh -e
 echo "==================== Installing BabbleSim ==================="
-export BSIM_VERSION=v1.0.2
+export BSIM_VERSION=v1.0.3
 mkdir -p /opt/bsim
 cd /opt/bsim
 curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo  && chmod a+x ./repo 
