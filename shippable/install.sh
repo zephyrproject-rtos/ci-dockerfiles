@@ -28,8 +28,8 @@ smbclient
 
 echo "================= Installing Python packages =================="
 apt-get install -q -y \
-python-pip=8.1* \
-python-software-properties=0.96* \
+python-pip=9.0* \
+software-properties-common=0.96* \
 python-dev=2.7*
 
 pip install -q virtualenv==16.5.0
