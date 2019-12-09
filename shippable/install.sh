@@ -74,14 +74,15 @@ update-alternatives \
 gcc --version
 echo "================== Successfully Installed gcc ${GCC_VERSION} ==============="
 
-echo "==================== Installing clang 3.9.0 ==================="
-wget -nv http://llvm.org/releases/3.9.0/clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
-tar xf clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04.tar.xz
-cd clang+llvm-3.9.0-x86_64-linux-gnu-ubuntu-16.04
+CLANG_VERSION=9.0.0
+echo "==================== Installing clang $CLANG_VERSION ==============="
+wget -nv http://releases.llvm.org/"$CLANG_VERSION"/clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+tar xf clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+cd clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04
 cp -R * /usr/local/
 cd ../
 clang --version
-echo "=============== Successfully Installed clang 3.9.0 ============"
+echo "============= Successfully Installed clang $CLANG_VERSION ==========="
 
 echo "=================== Install packages for cpp ======================"
 
