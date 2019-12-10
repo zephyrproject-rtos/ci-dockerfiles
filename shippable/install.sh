@@ -82,6 +82,7 @@ cd clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04
 cp -R * /usr/local/
 cd ../
 clang --version
+rm clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 echo "============= Successfully Installed clang $CLANG_VERSION ==========="
 
 echo "=================== Install packages for cpp ======================"
