@@ -40,3 +40,5 @@ rm west.yml
 cd ..
 rmdir /opt/z-modules
 rm -fr /opt/.west
+chown -R buildslave.buildslave /opt/modules/
+chown -R buildslave.buildslave /opt/tools/
