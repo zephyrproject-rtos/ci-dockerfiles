@@ -29,3 +29,14 @@ cd scancode-toolkit
 ./scancode --copyright --license --license-diag --info --classify --summary --json scancode.js README.rst
 
 chmod -R a+rw /opt/scancode-toolkit/
+
+# Create a copy of the zephyr modules
+mkdir -p /opt/z-modules
+cd /opt/z-modules
+wget https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/west.yml
+west init -l .
+west update
+rm west.yml
+cd ..
+rmdir /opt/z-modules
+rm -fr /opt/.west
