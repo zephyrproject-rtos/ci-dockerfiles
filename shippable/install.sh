@@ -119,6 +119,7 @@ apt-get install -y \
 	xterm \
 	libreadline-dev \
 	makeself \
+	parallel \
 	p7zip-full \
 	cpio \
 	gperf \
