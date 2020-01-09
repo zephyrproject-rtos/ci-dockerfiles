@@ -34,7 +34,6 @@ python-dev=2.7*
 
 pip install -q virtualenv==16.5.0
 pip install -q pyOpenSSL==19.0.0
-pip install -q statistics numpy==1.16.5 enum34 #Needed by EDTT
 
 export JQ_VERSION=1.5*
 echo "================= Adding JQ $JQ_VERSION ========================="
@@ -135,6 +134,8 @@ apt-get install -y \
 pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
 pip3 install awscli PyGithub junitparser pylint
 
+# EDTT requirements
+pip3 install -q statistics numpy
 
 # mcuboot requirements
 
