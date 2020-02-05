@@ -132,7 +132,7 @@ apt-get install -y \
 	libpcap-dev \
 	locales
 
-pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
+pip3 install -r https://raw.githubusercontent.com/mbolivar/zephyr/west-0.7.0-docs/scripts/requirements.txt
 pip3 install awscli PyGithub junitparser pylint
 
 # EDTT requirements
