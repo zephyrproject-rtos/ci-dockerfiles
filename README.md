@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This repository contains the dockerfiles used by Zephyr CI.
+ This repository contains the dockerfiles used by Zephyr CI.
 
 ## Contributing
 
