@@ -50,5 +50,4 @@ jobs:
       run: |
         pwd
         cd shippable
-        docker push docker.io/${DOCKER_USER}/${DOCKER_REPO}:latest
         docker push docker.io/${DOCKER_USER}/${DOCKER_REPO}:${DOCKER_TAG}
