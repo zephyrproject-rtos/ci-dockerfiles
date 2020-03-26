@@ -73,9 +73,9 @@ update-alternatives \
 gcc --version
 echo "================== Successfully Installed gcc ${GCC_VERSION} ==============="
 
-CLANG_VERSION=9.0.0
+CLANG_VERSION=10.0.0
 echo "==================== Installing clang $CLANG_VERSION ==============="
-wget -nv http://releases.llvm.org/"$CLANG_VERSION"/clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+wget -nv https://github.com/llvm/llvm-project/releases/download/llvmorg-"$CLANG_VERSION"/clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 tar xf clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 cd clang+llvm-"$CLANG_VERSION"-x86_64-linux-gnu-ubuntu-18.04
 cp -R * /usr/local/
