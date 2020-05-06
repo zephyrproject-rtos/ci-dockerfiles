@@ -24,4 +24,10 @@ jobs:
     - name: Build the Docker image
       run: |
         cd shippable
+        df -h
+        # remove a few things to free up space
+        sudo rm -rf "/usr/local/share/boost"
+        sudo rm -rf "/usr/local/lib/android"
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        df -h
         docker build . --file Dockerfile --tag docker.io/${DOCKER_USER}/${DOCKER_REPO}:${{ github.sha }}
