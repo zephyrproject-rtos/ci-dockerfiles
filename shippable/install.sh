@@ -132,6 +132,9 @@ apt-get install -y \
 	libpcap-dev \
 	locales
 
+# install srecord for srec_cat - multi image binary manip (ie TFM)
+apt-get install -y srecord
+
 pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
 pip3 install awscli PyGithub junitparser pylint
 
