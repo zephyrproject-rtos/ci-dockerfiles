@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-VERSION=0.11.3
+VERSION=0.11.4
 wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${VERSION}/zephyr-sdk-${VERSION}-setup.run
 chmod +x zephyr-sdk-${VERSION}-setup.run
 
