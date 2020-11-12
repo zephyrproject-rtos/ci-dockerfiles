@@ -11,7 +11,7 @@ cd ..
 rm -rf ccache-${CCACHE_VERSION} ccache-${CCACHE_VERSION}.tar.bz2
 
 
-CMAKE_VERSION=3.13.1
+CMAKE_VERSION=3.15.7
 wget -q https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
 tar xf cmake-${CMAKE_VERSION}-Linux-x86_64.tar.gz
 cp -a cmake-${CMAKE_VERSION}-Linux-x86_64/bin/* /usr/local/bin/
