@@ -143,7 +143,7 @@ pip3 install -q statistics numpy
 
 # mcuboot requirements
 
-pip3 install -r https://raw.githubusercontent.com/JuulLabs-OSS/mcuboot/master/scripts/requirements.txt
+pip3 install -r https://raw.githubusercontent.com/mcu-tools/mcuboot/master/scripts/requirements.txt
 
 # imgtool, needed for MCUboot to sign images (i.e. for TF-M S/NS builds)
 pip3 install -q imgtool
