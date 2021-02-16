@@ -99,7 +99,6 @@ apt-get install -y \
 	gcc\
 	g++\
 	python3-ply \
-	python3-yaml \
 	doxygen \
 	device-tree-compiler \
 	qemu \
@@ -134,6 +133,9 @@ apt-get install -y \
 
 # install srecord for srec_cat - multi image binary manip (ie TFM)
 apt-get install -y srecord
+
+# Update pip3
+pip3 install -U pip
 
 pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
 pip3 install awscli PyGithub junitparser pylint
