@@ -149,3 +149,7 @@ pip3 install -r https://raw.githubusercontent.com/mcu-tools/mcuboot/master/scrip
 
 # imgtool, needed for MCUboot to sign images (i.e. for TF-M S/NS builds)
 pip3 install -q imgtool
+
+# install protobuf packages
+apt-get install -y protobuf-compiler
+pip3 install -q protobuf
