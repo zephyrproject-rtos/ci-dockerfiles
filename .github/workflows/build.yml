@@ -23,7 +23,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        cd shippable
+        cd scripts
         df -h
         # remove a few things to free up space
         sudo rm -rf "/usr/local/share/boost"

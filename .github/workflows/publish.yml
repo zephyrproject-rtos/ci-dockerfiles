@@ -41,7 +41,7 @@ jobs:
       env:
         DOCKER_TAG: ${{ steps.docker_tag.outputs.DOCKER_TAG }}
       run: |
-        cd shippable
+        cd scripts
         df -h
         # remove a few things to free up space
         sudo rm -rf "/usr/local/share/boost"
@@ -55,5 +55,5 @@ jobs:
         DOCKER_TAG: ${{ steps.docker_tag.outputs.DOCKER_TAG }}
       run: |
         pwd
-        cd shippable
+        cd scripts
         docker push docker.io/${DOCKER_USER}/${DOCKER_REPO}:${DOCKER_TAG}

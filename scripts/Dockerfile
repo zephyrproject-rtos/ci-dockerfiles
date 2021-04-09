@@ -1,18 +1,18 @@
 FROM ubuntu:18.04
 
-ADD . /shippable
+ADD . /scripts
 
-RUN /shippable/install.sh && rm -rf /tmp && mkdir /tmp && chmod 1777 /tmp
+RUN /scripts/install.sh && rm -rf /tmp && mkdir /tmp && chmod 1777 /tmp
 
 RUN useradd -m -G plugdev buildslave \
  && echo 'buildslave ALL = NOPASSWD: ALL' > /etc/sudoers.d/buildslave \
  && chmod 0440 /etc/sudoers.d/buildslave
 
-RUN /shippable/install_sdk.sh
-RUN /shippable/install_vendor_toolchains.sh
-RUN /shippable/install_bsim.sh
-RUN /shippable/install_renode.sh
-RUN /shippable/install_source.sh
+RUN /scripts/install_sdk.sh
+RUN /scripts/install_vendor_toolchains.sh
+RUN /scripts/install_bsim.sh
+RUN /scripts/install_renode.sh
+RUN /scripts/install_source.sh
 
 # Set the locale
 RUN locale-gen en_US.UTF-8
