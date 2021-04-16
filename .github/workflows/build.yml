@@ -11,6 +11,7 @@ on: [pull_request]
 env:
   DOCKER_USER: zephyrprojectrtos
   DOCKER_REPO: ci
+  DOCKER_REPO2: zephyr-build
 
 jobs:
 
@@ -30,3 +31,4 @@ jobs:
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         df -h
         docker build . --file Dockerfile --tag docker.io/${DOCKER_USER}/${DOCKER_REPO}:${{ github.sha }}
+        docker build . --build-arg FROM_TAG=${{ github.sha }} --file Dockerfile.user --tag docker.io/${DOCKER_USER}/${DOCKER_REPO2}:latest
