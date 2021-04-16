@@ -55,29 +55,23 @@ RUN apt-get install --no-install-recommends -y \
 	libglib2.0-dev \
 	libgtk2.0-0 \
 	libpcap-dev \
-	libsdl2-dev:i386 \
 	libtool \
 	locales \
 	make \
-	mono-complete \
 	net-tools \
 	ninja-build \
-	openbox \
 	pkg-config \
 	protobuf-compiler \
 	python3-dev \
 	python3-pip \
 	python3-ply \
 	python3-setuptools \
-	python-xdg \
 	qemu \
 	socat \
 	srecord \
 	sudo \
 	texinfo \
 	valgrind \
-	x11vnc \
-	xvfb \
 	xz-utils && \
 	apt install -y ./renode_${RENODE_VERSION}_amd64.deb && \
 	rm renode_${RENODE_VERSION}_amd64.deb && \
@@ -128,6 +122,9 @@ RUN cd /opt/bsim && \
 	echo ${BSIM_VERSION} > ./version && \
 	chmod ag+w . -R
 
+RUN apt-get clean && \
+	sudo apt-get autoremove --purge
+
 RUN groupadd -g $GID -o user
 
 RUN useradd -u $UID -m -g user -G plugdev user \
@@ -137,7 +134,6 @@ RUN useradd -u $UID -m -g user -G plugdev user \
 # Set the locale
 ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZSDK_VERSION}
-ENV ZEPHYR_BASE=/workdir
 ENV GNUARMEMB_TOOLCHAIN_PATH=/opt/toolchains/${GCC_ARM_NAME}
 ENV PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig
 
