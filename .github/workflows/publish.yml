@@ -11,6 +11,7 @@ on: [push]
 env:
   DOCKER_USER: zephyrprojectrtos
   DOCKER_REPO: ci
+  DOCKER_REPO2: zephyr-build
 
 jobs:
   build:
@@ -48,9 +49,11 @@ jobs:
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         df -h
         docker build . --file Dockerfile --tag docker.io/${DOCKER_USER}/${DOCKER_REPO}:${DOCKER_TAG}
+        docker build . --file Dockerfile --build-arg FROM_TAG=${DOCKER_TAG} --tag docker.io/${DOCKER_USER}/${DOCKER_REPO2}:${DOCKER_TAG}
 
     - name: push
       env:
         DOCKER_TAG: ${{ steps.docker_tag.outputs.DOCKER_TAG }}
       run: |
         docker push docker.io/${DOCKER_USER}/${DOCKER_REPO}:${DOCKER_TAG}
+        docker push docker.io/${DOCKER_USER}/${DOCKER_REPO2}:${DOCKER_TAG}
