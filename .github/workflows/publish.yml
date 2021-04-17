@@ -16,7 +16,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    if: github.repository == 'zephyrproject-rtos/ci-dockerfiles'
     steps:
     - name: Docker Tag
       id: docker_tag
