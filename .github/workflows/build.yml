@@ -16,9 +16,8 @@ env:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
+    if: github.repository == 'zephyrproject-rtos/ci-dockerfiles'
     steps:
     - uses: actions/checkout@v2
 
