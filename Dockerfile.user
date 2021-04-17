@@ -10,6 +10,7 @@ RUN dpkg --add-architecture i386 && \
 	python-xdg \
 	x11vnc \
 	xvfb \
+	xterm \
 	xz-utils && \
 	rm -rf /var/lib/apt/lists/*
 
