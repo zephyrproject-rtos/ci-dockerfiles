@@ -4,7 +4,7 @@ ARG ZSDK_VERSION=0.12.4
 ARG GCC_ARM_NAME=gcc-arm-none-eabi-10-2020-q4-major
 ARG CMAKE_VERSION=3.18.3
 ARG RENODE_VERSION=1.12.0
-ARG LLVM_VERSION=11.0.0
+ARG LLVM_VERSION=12
 ARG BSIM_VERSION=v1.0.3
 ARG WGET_ARGS="--show-progress --progress=bar:force:noscroll"
 
@@ -23,7 +23,7 @@ RUN wget -q --no-check-certificate https://github.com/renode/renode/releases/dow
 	wget -q --no-check-certificate https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run && \
 	wget -q --no-check-certificate https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/${GCC_ARM_NAME}-x86_64-linux.tar.bz2  && \
 	wget -q --no-check-certificate https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
-	wget -q --no-check-certificate https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/clang+llvm-${LLVM_VERSION}-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+	wget -q --no-check-certificate https://apt.llvm.org/llvm.sh
 
 RUN apt-get install --no-install-recommends -y \
 	gnupg \
@@ -32,6 +32,8 @@ RUN apt-get install --no-install-recommends -y \
 	echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
 	apt-get -y update && \
 	apt-get install --no-install-recommends -y \
+	software-properties-common \
+	lsb-release \
 	autoconf \
 	automake \
 	build-essential \
@@ -73,6 +75,8 @@ RUN apt-get install --no-install-recommends -y \
 	texinfo \
 	valgrind \
 	xz-utils && \
+	apt remove libclang1-10 -y && \
+	apt autoremove -y && \
 	apt install -y ./renode_${RENODE_VERSION}_amd64.deb && \
 	rm renode_${RENODE_VERSION}_amd64.deb && \
 	rm -rf /var/lib/apt/lists/*
@@ -105,11 +109,9 @@ RUN chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
 	./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --skip-license --prefix=/usr/local && \
 	rm -f ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh
 
-RUN tar xf clang+llvm-${LLVM_VERSION}-x86_64-linux-gnu-ubuntu-20.04.tar.xz && \
-	cd clang+llvm-"$LLVM_VERSION"-x86_64-linux-gnu-ubuntu-20.04 && \
-	cp -R * /usr/local/ && \
-	cd ../ && \
-	rm clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+RUN chmod +x llvm.sh && \
+	./llvm.sh ${LLVM_VERSION} && \
+	rm llvm.sh
 
 RUN mkdir -p /opt/bsim
 RUN cd /opt/bsim && \
