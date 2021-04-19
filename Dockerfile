@@ -57,6 +57,7 @@ RUN apt-get install --no-install-recommends -y \
 	libglib2.0-dev \
 	libgtk2.0-0 \
 	libpcap-dev \
+	libsdl2-dev:i386 \
 	libtool \
 	locales \
 	make \
