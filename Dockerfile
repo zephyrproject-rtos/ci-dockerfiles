@@ -6,7 +6,7 @@ ARG CMAKE_VERSION=3.18.3
 ARG RENODE_VERSION=1.12.0
 ARG LLVM_VERSION=12
 ARG BSIM_VERSION=v1.0.3
-ARG WGET_ARGS="--show-progress --progress=bar:force:noscroll"
+ARG WGET_ARGS="-q --show-progress --progress=bar:force:noscroll --no-check-certificate"
 
 ARG UID=1000
 ARG GID=1000
@@ -72,7 +72,7 @@ RUN dpkg --add-architecture i386 && \
 	xz-utils && \
 	apt remove libclang1-10 -y && \
 	apt autoremove -y && \
-	wget -q --no-check-certificate https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
+	wget ${WGET_ARGS} https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
 	apt install -y ./renode_${RENODE_VERSION}_amd64.deb && \
 	rm renode_${RENODE_VERSION}_amd64.deb && \
 	rm -rf /var/lib/apt/lists/*
@@ -95,20 +95,20 @@ RUN pip3 install wheel pip -U &&\
 
 RUN mkdir -p /opt/toolchains
 
-RUN wget -q --no-check-certificate https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run && \
+RUN wget ${WGET_ARGS} https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run && \
 	sh "zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run" --quiet -- -d /opt/toolchains/zephyr-sdk-${ZSDK_VERSION} && \
 	rm "zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run"
 
-RUN wget -q --no-check-certificate https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/${GCC_ARM_NAME}-x86_64-linux.tar.bz2  && \
+RUN wget ${WGET_ARGS} https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/${GCC_ARM_NAME}-x86_64-linux.tar.bz2  && \
 	tar -xf ${GCC_ARM_NAME}-x86_64-linux.tar.bz2 -C /opt/toolchains/ && \
 	rm -f ${GCC_ARM_NAME}-x86_64-linux.tar.bz2
 
-RUN wget -q --no-check-certificate https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
+RUN wget ${WGET_ARGS} https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
 	chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
 	./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --skip-license --prefix=/usr/local && \
 	rm -f ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh
 
-RUN wget -q --no-check-certificate https://apt.llvm.org/llvm.sh && \
+RUN wget ${WGET_ARGS} https://apt.llvm.org/llvm.sh && \
 	chmod +x llvm.sh && \
 	./llvm.sh ${LLVM_VERSION} && \
 	rm llvm.sh
@@ -116,7 +116,7 @@ RUN wget -q --no-check-certificate https://apt.llvm.org/llvm.sh && \
 RUN mkdir -p /opt/bsim
 RUN cd /opt/bsim && \
 	rm -f repo && \
-	wget -q --no-check-certificate https://storage.googleapis.com/git-repo-downloads/repo && \
+	wget ${WGET_ARGS} https://storage.googleapis.com/git-repo-downloads/repo && \
 	chmod a+x ./repo && \
 	python3 ./repo init -u https://github.com/BabbleSim/manifest.git -m zephyr_docker.xml -b ${BSIM_VERSION} --depth 1 &&\
 	python3 ./repo sync && \
