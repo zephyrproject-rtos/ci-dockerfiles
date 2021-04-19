@@ -17,15 +17,6 @@ RUN dpkg --add-architecture i386 && \
 	apt-get -y update && \
 	apt-get -y upgrade && \
 	apt-get install --no-install-recommends -y \
-	wget
-
-RUN wget -q --no-check-certificate https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
-	wget -q --no-check-certificate https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run && \
-	wget -q --no-check-certificate https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/${GCC_ARM_NAME}-x86_64-linux.tar.bz2  && \
-	wget -q --no-check-certificate https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
-	wget -q --no-check-certificate https://apt.llvm.org/llvm.sh
-
-RUN apt-get install --no-install-recommends -y \
 	gnupg \
 	ca-certificates && \
 	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
@@ -77,9 +68,11 @@ RUN apt-get install --no-install-recommends -y \
 	sudo \
 	texinfo \
 	valgrind \
+	wget \
 	xz-utils && \
 	apt remove libclang1-10 -y && \
 	apt autoremove -y && \
+	wget -q --no-check-certificate https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
 	apt install -y ./renode_${RENODE_VERSION}_amd64.deb && \
 	rm renode_${RENODE_VERSION}_amd64.deb && \
 	rm -rf /var/lib/apt/lists/*
@@ -102,17 +95,21 @@ RUN pip3 install wheel pip -U &&\
 
 RUN mkdir -p /opt/toolchains
 
-RUN sh "zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run" --quiet -- -d /opt/toolchains/zephyr-sdk-${ZSDK_VERSION} && \
+RUN wget -q --no-check-certificate https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run && \
+	sh "zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run" --quiet -- -d /opt/toolchains/zephyr-sdk-${ZSDK_VERSION} && \
 	rm "zephyr-sdk-${ZSDK_VERSION}-x86_64-linux-setup.run"
 
-RUN tar -xf ${GCC_ARM_NAME}-x86_64-linux.tar.bz2 -C /opt/toolchains/ && \
+RUN wget -q --no-check-certificate https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/${GCC_ARM_NAME}-x86_64-linux.tar.bz2  && \
+	tar -xf ${GCC_ARM_NAME}-x86_64-linux.tar.bz2 -C /opt/toolchains/ && \
 	rm -f ${GCC_ARM_NAME}-x86_64-linux.tar.bz2
 
-RUN chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
+RUN wget -q --no-check-certificate https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
+	chmod +x cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
 	./cmake-${CMAKE_VERSION}-Linux-x86_64.sh --skip-license --prefix=/usr/local && \
 	rm -f ./cmake-${CMAKE_VERSION}-Linux-x86_64.sh
 
-RUN chmod +x llvm.sh && \
+RUN wget -q --no-check-certificate https://apt.llvm.org/llvm.sh && \
+	chmod +x llvm.sh && \
 	./llvm.sh ${LLVM_VERSION} && \
 	rm llvm.sh
 
@@ -141,4 +138,3 @@ ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZSDK_VERSION}
 ENV GNUARMEMB_TOOLCHAIN_PATH=/opt/toolchains/${GCC_ARM_NAME}
 ENV PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig
-
