@@ -2,4 +2,4 @@
 
 The content of this repository has moved to
 
-	https://github.com/zephyrproject-rtos/docker-image
+https://github.com/zephyrproject-rtos/docker-image
