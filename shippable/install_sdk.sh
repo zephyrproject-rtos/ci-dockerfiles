@@ -7,7 +7,7 @@ chmod +x zephyr-sdk-${VERSION}-x86_64-linux-setup.run
 ./zephyr-sdk-${VERSION}-x86_64-linux-setup.run --quiet -- -d /opt/sdk/zephyr-sdk-${VERSION}
 rm zephyr-sdk-${VERSION}-x86_64-linux-setup.run
 
-VERSION=0.13.0-alpha-1
+VERSION=0.12.3
 wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${VERSION}/zephyr-sdk-${VERSION}-x86_64-linux-setup.run
 chmod +x zephyr-sdk-${VERSION}-x86_64-linux-setup.run
 
